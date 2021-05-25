@@ -1,0 +1,36 @@
+unit fmConsCadClienteU;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls, Vcl.Buttons,
+  Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TfmConsCadClienteF = class(TForm)
+    dbCliente: TDBGrid;
+    Cliente: TZQuery;
+    ClienteS: TDataSource;
+    GroupBox1: TGroupBox;
+    lbConsultar: TLabel;
+    btnRetornar: TBitBtn;
+    btnFechar: TBitBtn;
+    edConsultar: TEdit;
+    btnProcessar: TBitBtn;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmConsCadClienteF: TfmConsCadClienteF;
+
+implementation
+uses DMU;
+
+{$R *.dfm}
+
+end.

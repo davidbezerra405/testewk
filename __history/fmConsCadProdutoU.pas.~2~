@@ -1,0 +1,37 @@
+unit fmConsCadProdutoU;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Buttons,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfmConsCadProdutoF = class(TForm)
+    dbProduto: TDBGrid;
+    Produto: TZQuery;
+    ProdutoS: TDataSource;
+    GroupBox1: TGroupBox;
+    lbConsultar: TLabel;
+    btnRetornar: TBitBtn;
+    btnFechar: TBitBtn;
+    edConsultar: TEdit;
+    btnProcessar: TBitBtn;
+    Produtoid: TIntegerField;
+    Produtodescricao: TWideStringField;
+    Produtoprecovenda: TFloatField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmConsCadProdutoF: TfmConsCadProdutoF;
+
+implementation
+
+{$R *.dfm}
+
+end.

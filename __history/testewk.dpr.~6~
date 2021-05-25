@@ -1,0 +1,19 @@
+program testewk;
+
+uses
+  Vcl.Forms,
+  pedidoU in 'pedidoU.pas' {Form1},
+  DMU in 'DMU.pas' {DM: TDataModule},
+  funcoesU in 'funcoesU.pas',
+  fmConsCadClienteU in 'fmConsCadClienteU.pas' {fmConsCadClienteF},
+  fmConsCadProdutoU in 'fmConsCadProdutoU.pas' {fmConsCadProdutoF};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TDM, DM);
+  Application.Run;
+end.

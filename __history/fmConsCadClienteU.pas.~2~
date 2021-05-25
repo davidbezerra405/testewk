@@ -1,0 +1,71 @@
+unit fmConsCadClienteU;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls, Vcl.Buttons,
+  Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TfmConsCadClienteF = class(TForm)
+    dbNotaExt: TDBGrid;
+    NotaExt: TZQuery;
+    NotaExtid: TIntegerField;
+    NotaExtnumnota: TWideStringField;
+    NotaExtemissao: TDateField;
+    NotaExtid_fornecedor: TIntegerField;
+    NotaExtid_veiculo: TIntegerField;
+    NotaExtid_motorista: TIntegerField;
+    NotaExtkmveiculo: TIntegerField;
+    NotaExtid_usuariocad: TIntegerField;
+    NotaExtid_usuarioalt: TIntegerField;
+    NotaExtdatacad: TDateTimeField;
+    NotaExtdataalt: TDateTimeField;
+    NotaExtusuariocad: TWideStringField;
+    NotaExtusuarioalt: TWideStringField;
+    NotaExtfornecedor: TWideStringField;
+    NotaExtplaca: TWideStringField;
+    NotaExtmotorista: TWideStringField;
+    NotaExttotalnota: TFloatField;
+    NotaExtS: TDataSource;
+    GroupBox1: TGroupBox;
+    lbConsultar: TLabel;
+    lbCodFornecedor: TLabel;
+    btnRetornar: TBitBtn;
+    btnFechar: TBitBtn;
+    edConsultar: TEdit;
+    btnProcessar: TBitBtn;
+    edCodFornecedor: TEdit;
+    btnConsFornecedor: TBitBtn;
+    edNomeFornecedor: TEdit;
+    bxLancamento: TGroupBox;
+    lbDataLancInicial: TLabel;
+    lbDataLancFinal: TLabel;
+    edDataLancInicial: TMaskEdit;
+    btnConsDataLancInicial: TBitBtn;
+    edDataLancFinal: TMaskEdit;
+    btnConsDataLancFinal: TBitBtn;
+    bxEmissao: TGroupBox;
+    lbDataEmisInicial: TLabel;
+    lbDataEmisFinal: TLabel;
+    edDataEmisInicial: TMaskEdit;
+    btnConsDataEmisInicial: TBitBtn;
+    edDataEmisFinal: TMaskEdit;
+    btnConsDataEmisFinal: TBitBtn;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmConsCadClienteF: TfmConsCadClienteF;
+
+implementation
+uses DMU;
+
+{$R *.dfm}
+
+end.

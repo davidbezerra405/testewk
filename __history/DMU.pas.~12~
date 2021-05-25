@@ -1,0 +1,76 @@
+unit DMU;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset, ZAbstractConnection, ZConnection;
+
+type
+  TDM = class(TDataModule)
+    pedidodb: TZConnection;
+    pedidoprodutotmp: TZQuery;
+    pedidoprodutotmpS: TDataSource;
+    cliente: TZQuery;
+    produto: TZQuery;
+    produtoid: TIntegerField;
+    produtodescricao: TWideStringField;
+    produtoprecovenda: TFloatField;
+    clienteS: TDataSource;
+    produtoS: TDataSource;
+    pedido: TZQuery;
+    pedidoid: TIntegerField;
+    pedidodataemissao: TDateTimeField;
+    pedidoid_cliente: TIntegerField;
+    pedidovalortotal: TFloatField;
+    pedidonomecliente: TWideStringField;
+    pedidocidadecliente: TWideStringField;
+    pedidoufcliente: TWideStringField;
+    pedidoS: TDataSource;
+    pedidoproduto: TZQuery;
+    pedidoprodutoid: TIntegerField;
+    pedidoprodutoid_pedido: TIntegerField;
+    pedidoprodutoid_produto: TIntegerField;
+    pedidoprodutoquantidade: TIntegerField;
+    pedidoprodutovalorunitario: TFloatField;
+    pedidoprodutovalortotal: TFloatField;
+    pedidoprodutodescricaoproduto: TWideStringField;
+    pedidoprodutoprecoproduto: TFloatField;
+    pedidoprodutoS: TDataSource;
+    somaprodtmp: TZQuery;
+    somaprodtmpsoma: TFloatField;
+    somaprodtmpS: TDataSource;
+    SQLLocalizar: TZQuery;
+    SQLCriarTabela: TZQuery;
+    SQLSalvar: TZQuery;
+    pedidoprodutotmpid_pedidoproduto: TIntegerField;
+    pedidoprodutotmpid_produto: TIntegerField;
+    pedidoprodutotmpquantidade: TIntegerField;
+    pedidoprodutotmpvalorunitario: TFloatField;
+    pedidoprodutotmpvalortotal: TFloatField;
+    pedidoprodutotmpdescricaoproduto: TWideStringField;
+    pedidoprodutotmpprecoproduto: TFloatField;
+    SQLExcluir: TZQuery;
+    pedidoprodutotmpid: TIntegerField;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+begin
+   pedidodb.Connected := False;
+end;
+
+end.

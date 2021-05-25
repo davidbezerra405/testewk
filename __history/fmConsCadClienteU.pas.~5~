@@ -1,0 +1,105 @@
+unit fmConsCadClienteU;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls, Vcl.Buttons,
+  Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TfmConsCadClienteF = class(TForm)
+    dbCliente: TDBGrid;
+    Cliente: TZQuery;
+    ClienteS: TDataSource;
+    GroupBox1: TGroupBox;
+    lbConsultar: TLabel;
+    btnRetornar: TBitBtn;
+    btnFechar: TBitBtn;
+    edConsultar: TEdit;
+    btnProcessar: TBitBtn;
+    procedure FormActivate(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure dbClienteDblClick(Sender: TObject);
+    procedure dbClienteTitleClick(Column: TColumn);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmConsCadClienteF: TfmConsCadClienteF;
+  iOrdem: integer;
+  iOrdemDesc: boolean;
+  iOrdemTitle: String;
+
+implementation
+uses DMU;
+
+{$R *.dfm}
+
+procedure TfmConsCadClienteF.dbClienteDblClick(Sender: TObject);
+begin
+   ModalResult := mrOk;
+end;
+
+procedure TfmConsCadClienteF.dbClienteTitleClick(Column: TColumn);
+var nOrdem: integer;
+    nOrdemTitle: String;
+begin
+   nOrdem := Column.ID;
+   if (nOrdem <> iOrdem) then begin
+      dbCliente.Columns[iOrdem].Title.Caption := iOrdemTitle;
+      iOrdemTitle := dbCliente.Columns[nOrdem].Title.Caption;
+      dbCliente.Columns[nOrdem].Title.Font.Color := clBlue;
+      dbCliente.Columns[nOrdem].Title.Font.Style := [fsBold];
+      dbCliente.Columns[iOrdem].Title.Font.Color := clWindowText;
+      dbCliente.Columns[iOrdem].Title.Font.Style := [];
+      iOrdem := nOrdem;
+      iOrdemDesc := False;
+      ProcessarFiltro;
+   end
+   else begin
+      iOrdemDesc := not iOrdemDesc;
+      if (iOrdemDesc) then begin
+         iOrdemTitle := dbCliente.Columns[iOrdem].Title.Caption;
+         nOrdemTitle := iOrdemTitle + '(v)';
+         dbCliente.Columns[iOrdem].Title.Caption := nOrdemTitle;
+      end
+      else begin
+         dbCliente.Columns[iOrdem].Title.Caption := iOrdemTitle;
+      end;
+      ProcessarFiltro;
+   end;
+end;
+
+procedure TfmConsCadClienteF.FormActivate(Sender: TObject);
+begin
+   DM.Pedidodb.Connected := True;
+   Cliente.Active := True;
+   dbCliente.SetFocus;
+end;
+
+procedure TfmConsCadClienteF.FormCreate(Sender: TObject);
+begin
+   edConsultar.Clear;
+   iOrdem := 1;
+   dbCliente.Columns[iOrdem].Title.Font.Color := clBlue;
+   dbCliente.Columns[iOrdem].Title.Font.Style := [fsBold];
+   iOrdemTitle := dbCliente.Columns[iOrdem].Title.Caption;
+   iOrdemDesc := False;
+   ProcessarFiltro;
+end;
+
+procedure TfmConsCadClienteF.FormKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+   if (Key = VK_RETURN) then begin
+      ModalResult := mrOk;
+   end;
+end;
+
+end.

@@ -1,0 +1,57 @@
+unit fmCarregarPedidoU;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfmCarregarPedidoF = class(TForm)
+    dbPedido: TDBGrid;
+    GroupBox1: TGroupBox;
+    lbConsultar: TLabel;
+    btnFechar: TBitBtn;
+    edConsultar: TEdit;
+    btnLimparConsulta: TBitBtn;
+    bxEmissao: TGroupBox;
+    lbDataEmisInicial: TLabel;
+    lbDataEmisFinal: TLabel;
+    edDataEmissaoInicial: TDateTimePicker;
+    edDataEmissaoFinal: TDateTimePicker;
+    btnFiltrar: TBitBtn;
+    GroupBox2: TGroupBox;
+    lbNumPedido: TLabel;
+    lbDataEmissao: TLabel;
+    lbCodCliente: TLabel;
+    lbValorTotal: TLabel;
+    edNumPedido: TEdit;
+    edDataEmissao: TEdit;
+    edNomeCliente: TEdit;
+    edValorTotal: TEdit;
+    btnCarregarPedido: TBitBtn;
+    Pedido: TZQuery;
+    Pedidoid: TIntegerField;
+    Pedidodataemissao: TDateTimeField;
+    Pedidoid_cliente: TIntegerField;
+    Pedidovalortotal: TFloatField;
+    Pedidonomecliente: TWideStringField;
+    Pedidocidadecliente: TWideStringField;
+    Pedidoufcliente: TWideStringField;
+    PedidoS: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmCarregarPedidoF: TfmCarregarPedidoF;
+
+implementation
+
+{$R *.dfm}
+
+end.
